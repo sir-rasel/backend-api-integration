@@ -1,0 +1,8 @@
+.form {
+    background-color: lightgray;
+    border: 1 px solid gray;
+    box-shadow: 1px 1px 5px 1px lightslategray, -1px -1px 5px 1px lightslategray;
+    margin: 0 auto;
+    padding: 5px;
+}
+
