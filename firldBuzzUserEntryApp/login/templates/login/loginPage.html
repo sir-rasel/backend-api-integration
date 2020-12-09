@@ -1,10 +1,11 @@
-{% extends "../../../templates/base.html" %}
+{% extends "login/base.html" %}
 {% block content %}
     <form method="POST">
+        {%csrf_token%}
         <label for="userName">User-name:</label><br>
-        <input type="email" id="userName" name="userName"><br>
+        <input type="email" id="userName" name="userName" required><br>
         <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
+        <input type="password" id="password" name="password" required><br><br>
         <input type="submit" value="Submit">
     </form>
-{% endblock content%}
+{% endblock content %}

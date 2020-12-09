@@ -7,18 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {% load static %}
-    <link rel="icon" href="{% static icon/icon-192x192.png %}" sizes="192x192" />
-    <link rel="apple-touch-icon" href="{% static icon/icon-300x300.png %}" sizes="180x180" />
-    <link rel="apple-touch-icon" href="{% static icon/icon-300x300.png %}" sizes="300x300" />
+    <link rel="icon" href="{% static 'icon/icon-192x192.png' %}" sizes="192x192" />
+    <link rel="apple-touch-icon" href="{% static 'icon/icon-300x300.png' %}" sizes="180x180" />
+    <link rel="apple-touch-icon" href="{% static 'icon/icon-300x300.png' %}" sizes="300x300" />
 
-    <link rel="stylesheet" href="{% static css/style.css %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
     <title>Field Buzz User Data Entry APP</title>
 </html>
 
 <body>
     <section class="form">
-        <img src="{% static icon/fieldBuzzLogo.png %}" alt="field buzz logo" />
+        <a href="https://field.buzz/" target="_blank"><img src="{% static 'icon/fieldBuzzLogo.png' %}" alt="field buzz logo" /></a><br/><br/>
         {% block content %}
             <!-- Content goes here!!! -->
         {% endblock %} 

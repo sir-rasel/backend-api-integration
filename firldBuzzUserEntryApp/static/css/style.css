@@ -1,8 +1,50 @@
 .form {
-    background-color: lightgray;
-    border: 1 px solid gray;
+    width: max-content;
+    background-color: #00A99D;
+    border: 1 px solid lightgray;
     box-shadow: 1px 1px 5px 1px lightslategray, -1px -1px 5px 1px lightslategray;
-    margin: 0 auto;
-    padding: 5px;
+    margin: 5% auto;
+    padding: 5%;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 1.2em;
 }
 
+.form:hover {
+    border: 1 px solid red;
+    box-shadow: 1px 1px 5px 1px black, -1px -1px 5px 1px black;
+}
+
+.form input {
+    width: 100%;
+    height: 2em;
+    margin-bottom: 5%;
+    border-radius: 5px;
+    outline: unset;
+}
+
+.form input:focus {
+    padding: 1%;
+    border: 2px solid red;
+    outline: unset;
+}
+
+.form input[type=submit] {
+    width: 50%;
+    margin: 0 25%;
+    border-radius: 10px;
+    border: 1px solid red;
+}
+
+.form input[type=submit]:hover {
+    background: white;
+    color: blueviolet;
+    border: 2px solid black;
+}
+
+.form input[type=radio]{
+    width: initial;
+    height: unset;
+    margin: 0;
+    display: inline;
+}

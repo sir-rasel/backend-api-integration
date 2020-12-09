@@ -1,4 +1,4 @@
-{% extends "../../../templates/base.html" %}
+{% extends "dataEntry/base.html" %}
 {% block content %}
     <form method="POST">
         <label for="name">Applicant Name:</label><br>
@@ -29,10 +29,10 @@
         <input type="text" id="workplace" name="workplace" maxlength="256"><br>
 
         <label>Applying In:</label><br>
-        <input type="radio" id="backend" name="applying" value="backend" required><br>
-        <label for="backend">Backend:</label><br>
-        <input type="radio" id="mobile" name="applying" value="mobile" required><br>
-        <label for="mobile">Mobile:</label><br>
+        <input type="radio" id="backend" name="applying" value="backend" required>
+        <label for="backend">Backend</label><br/>
+        <input type="radio" id="mobile" name="applying" value="mobile" required>
+        <label for="mobile">Mobile</label><br/><br/>
 
         <label for="salary">Expected Salary:</label><br>
         <input type="number" id="salary" name="salary" max="60000" min="15000" required><br>
