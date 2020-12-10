@@ -21,6 +21,7 @@
     margin-bottom: 5%;
     border-radius: 5px;
     outline: unset;
+    display: block;
 }
 
 .form input:focus {

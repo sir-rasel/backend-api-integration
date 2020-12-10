@@ -1,51 +1,8 @@
 {% extends "dataEntry/base.html" %}
 {% block content %}
-    <form method="POST">
-        <label for="name">Applicant Name:</label><br>
-        <input type="text" id="name" name="name" maxlength="256" required><br>
-
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" maxlength="256" required><br>
-
-        <label for="phone">Phone:</label><br>
-        <input type="text" id="phone" name="phone" maxlength="14" required><br>
-
-        <label for="address">Full Address:</label><br>
-        <input type="text" id="address" name="address" maxlength="512"><br>
-
-        <label for="university">Name of University:</label><br>
-        <input type="text" id="university" name="university" maxlength="256" required><br>
-
-        <label for="graduationYear">Graduation Year:</label><br>
-        <input type="text" id="graduationYear" name="graduationYear" max="2020" min="2015"><br>
-
-        <label for="cgpa">CGPA:</label><br>
-        <input type="text" id="cgpa" name="cgpa" max="4.0" min="2.0"><br>
-
-        <label for="experience">Experience In Months:</label><br>
-        <input type="text" id="experience" name="experience" max="100" min="0"><br>
-
-        <label for="workplace">Current Workplace Name:</label><br>
-        <input type="text" id="workplace" name="workplace" maxlength="256"><br>
-
-        <label>Applying In:</label><br>
-        <input type="radio" id="backend" name="applying" value="backend" required>
-        <label for="backend">Backend</label><br/>
-        <input type="radio" id="mobile" name="applying" value="mobile" required>
-        <label for="mobile">Mobile</label><br/><br/>
-
-        <label for="salary">Expected Salary:</label><br>
-        <input type="number" id="salary" name="salary" max="60000" min="15000" required><br>
-
-        <label for="refference">FieldBuzz Refference:</label><br>
-        <input type="text" id="refference" name="refference" maxlength="256"><br>
-
-        <label for="projectUrl">Github Project Url:</label><br>
-        <input type="url" id="projectUrl" name="projectUrl" maxlength="512" required><br>
-
-        <label for="cvFile">CV File:</label><br>
-        <input type="file" id="cvFile" name="cvFile" required><br>
-
+    <form method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{ form }}
         <input type="submit" value="Submit">
     </form>
 {% endblock content%}
