@@ -49,3 +49,17 @@
     margin: 0;
     display: inline;
 }
+
+.form h1 {
+    color: antiquewhite;
+    margin: 0 auto;
+}
+
+.form a {
+    text-decoration: underline;
+    color: darkblue;
+}
+
+.form a:hover {
+    color: black;
+}

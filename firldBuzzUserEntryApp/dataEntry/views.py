@@ -4,10 +4,7 @@ from .userDataForm import UserDataForm
 import uuid
 import time
 import requests
-
-def accessCvSubmitApi(id):
-    pass
-
+import json
 
 class UserDataEntryView(View):
     def get(self, request, token=None):
@@ -22,7 +19,7 @@ class UserDataEntryView(View):
         
         if form.is_valid():
             testSubmitUrl = "https://recruitment.fisdev.com/api/v0/recruiting-entities/"
-            finalSubmitUrl = "https://recruitment.fisdev.com/api/v1/recruiting-entities/"
+            # finalSubmitUrl = "https://recruitment.fisdev.com/api/v1/recruiting-entities/"
 
             dataInstanceCreateTime = int(round(time.time() * 1000))
 
@@ -52,7 +49,17 @@ class UserDataEntryView(View):
             response = requests.post(testSubmitUrl, json=userData, headers=headers)
 
             if response.status_code == 201:
-                return render(request, 'dataEntry/massage.html', {'massage':'Successfully Created data via api request'})
+                fileTokenId = json.loads(response.text)['cv_file']['id']
+                fileSubmitUrl = f'https://recruitment.fisdev.com/api/file-object/{fileTokenId}/'
+
+                cvFile = {'file' : request.FILES['cvFile']}
+                headers['Content_type'] = 'application/pdf'
+                response = requests.post(fileSubmitUrl, files=cvFile, headers=headers)
+                
+                if response.status_code == 200:
+                    return render(request, 'dataEntry/massage.html', {'massage':"Successfully Posted data via api request"})
+                else:
+                    return render(request, 'dataEntry/massage.html', {'massage':"Successfully Created data But failed to submit CV file"})
             else:
                 return render(request, 'dataEntry/massage.html', {'massage':'Error to create data via api request'})
         else:
