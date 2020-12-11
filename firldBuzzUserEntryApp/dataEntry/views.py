@@ -18,8 +18,8 @@ class UserDataEntryView(View):
         form = UserDataForm(request.POST, request.FILES)
         
         if form.is_valid():
-            testSubmitUrl = "https://recruitment.fisdev.com/api/v0/recruiting-entities/"
-            # finalSubmitUrl = "https://recruitment.fisdev.com/api/v1/recruiting-entities/"
+            # testSubmitUrl = "https://recruitment.fisdev.com/api/v0/recruiting-entities/"
+            finalSubmitUrl = "https://recruitment.fisdev.com/api/v1/recruiting-entities/"
 
             dataInstanceCreateTime = int(round(time.time() * 1000))
 
@@ -42,11 +42,12 @@ class UserDataEntryView(View):
                     "tsync_id": str(uuid.uuid4()),
                 },
                 "on_spot_update_time": dataInstanceCreateTime,
-                 "on_spot_creation_time": dataInstanceCreateTime
+                "on_spot_creation_time": dataInstanceCreateTime
             }
 
             headers={'Authorization': f'token {token}'}
-            response = requests.post(testSubmitUrl, json=userData, headers=headers)
+            # response = requests.post(testSubmitUrl, json=userData, headers=headers)
+            response = requests.post(finalSubmitUrl, json=userData, headers=headers)
 
             if response.status_code == 201:
                 fileTokenId = json.loads(response.text)['cv_file']['id']
@@ -54,13 +55,16 @@ class UserDataEntryView(View):
 
                 cvFile = {'file' : request.FILES['cvFile']}
                 headers['Content_type'] = 'application/pdf'
-                response = requests.post(fileSubmitUrl, files=cvFile, headers=headers)
+
+                response = requests.put(fileSubmitUrl, files=cvFile, headers=headers)
+                
                 
                 if response.status_code == 200:
                     return render(request, 'dataEntry/massage.html', {'massage':"Successfully Posted data via api request"})
                 else:
-                    return render(request, 'dataEntry/massage.html', {'massage':"Successfully Created data But failed to submit CV file"})
+                    return render(request, 'dataEntry/massage.html', {'massage':f"Successfully Created data But failed to submit CV file {response.text}"})
             else:
                 return render(request, 'dataEntry/massage.html', {'massage':'Error to create data via api request'})
         else:
             return render(request, 'dataEntry/massage.html', {'massage':form.errors})
+
