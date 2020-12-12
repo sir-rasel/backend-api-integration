@@ -47,5 +47,8 @@ python manage.py runserver
 - Enter the valid username and password and it sends to the submit form page.
 - Enter data as mention in the form and all done. It gives a confirmation page.
 
+> ## User Interface
+<img src="images/loginInterface.PNG" alt="Login Interface" width="300px" height="200px"> <img src="images/dataEntryInterface.PNG" alt="User Data Entry Interface" width="200px" height="300px"> <img src="images/successMassageInterface.PNG" alt="Success Massage Interface" width="300px" height="200px">
+
 ## License
 [MIT standard license](https://opensource.org/licenses/MIT)
